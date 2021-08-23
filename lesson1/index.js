@@ -1,9 +1,14 @@
-const rootElem = document.querySelector('#root');
+const rootElement = document.querySelector('#root');
 
 const greetingElem = React.createElement(
   'div',
   { className: 'greeting' },
-  'Hello, React!'
+  React.createElement('h1', { className: 'greeting__title' }, 'Hello, world!'),
+  React.createElement(
+    'p',
+    { className: 'greeting__text' },
+    "I'm learning React"
+  )
 );
 
-ReactDOM.render(greetingElem, rootElem);
+ReactDOM.render(greetingElem, rootElement);
