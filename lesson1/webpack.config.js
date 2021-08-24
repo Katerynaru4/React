@@ -26,19 +26,6 @@ module.exports = (env, argv) => {
           test: /.js$/i,
           use: ['babel-loader'],
         },
-        {
-          test: /.(png|jpg|gif)$/i,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                outputPath: 'images',
-                limit: 8192,
-                name: '[name].[ext]',
-              },
-            },
-          ],
-        },
       ],
     },
     plugins: [
