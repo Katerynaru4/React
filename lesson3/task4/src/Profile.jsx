@@ -17,18 +17,18 @@ const month = [
 
 const Profile = (props) => {
   const birthDate = new Date(props.userData.birthDate);
-  const date = `${birthDate.getDate()} ${
-    month[birthDate.getMonth()]
-  } ${birthDate.getFullYear()}`;
+  const date = `${birthDate.getDate()} ${month[birthDate.getMonth()]} ${String(
+    birthDate.getFullYear()
+  ).slice(2)}`;
   return (
-    <div className="container">
+    <>
       <div className="profile__name">
         {props.userData.firstName} {props.userData.lastName}
       </div>
       <div className="profile__birth">
         Was born {date} in {props.userData.birthPlace}
       </div>
-    </div>
+    </>
   );
 };
 
