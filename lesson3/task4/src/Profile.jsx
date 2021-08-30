@@ -1,32 +1,12 @@
 import React from 'react';
-
-const month = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
-const getFormattedDate = (birthDate) =>
-  `${birthDate.getDate()} ${month[birthDate.getMonth()]} ${String(
-    birthDate.getFullYear()
-  ).slice(2)}`;
+import moment from 'moment';
 
 const Profile = (props) => {
-  const birthDate = getFormattedDate(new Date(props.userData.birthDate));
-
+  const birthDate = moment(props.userData.birthDate).format('D MMM YY');
   return (
     <>
       <div className="profile__name">
-        {props.userData.firstName} {props.userData.lastName}
+        {`${props.userData.firstName} ${props.userData.lastName}`}
       </div>
       <div className="profile__birth">
         {`Was born ${birthDate} in ${props.userData.birthPlace}`}
