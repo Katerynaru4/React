@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 const Profile = (props) => {
-  const birthDate = moment(props.userData.birthDate).format('DD MMM YY');
+  const birthDate = moment(props.userData.birthDate).format('D MMM YY');
   return (
     <>
       <div className="profile__name">
