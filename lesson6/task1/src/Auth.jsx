@@ -21,16 +21,18 @@ class Auth extends Component {
       isLoggedIn: false,
     });
   };
+
   render() {
+    const button = this.state.isLoggedIn ? (
+      <Logout onLogout={this.handleLogout} />
+    ) : (
+      <Login onLogin={this.handleLogin} />
+    );
+
     return (
       <div className="panel">
         <Greeting isLoggedIn={this.state.isLoggedIn} />
-
-        {this.state.isLoggedIn ? (
-          <Logout onLogout={this.handleLogout} />
-        ) : (
-          <Login onLogin={this.handleLogin} />
-        )}
+        {button}
       </div>
     );
   }
