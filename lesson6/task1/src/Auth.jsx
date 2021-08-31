@@ -22,7 +22,6 @@ class Auth extends Component {
     });
   };
   render() {
-    console.log(this.state.isLoggedIn);
     return (
       <div className="panel">
         <Greeting isLoggedIn={this.state.isLoggedIn} />
