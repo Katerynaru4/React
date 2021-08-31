@@ -31,7 +31,7 @@ class Auth extends Component {
 
     return (
       <div className="panel">
-        <Greeting isLoggedIn={this.state.isLoggedIn} />
+        {<Greeting isLoggedIn={this.state.isLoggedIn} />}
         {button}
       </div>
     );
