@@ -22,7 +22,7 @@ class Auth extends Component {
     if (this.state.status === 'isLogin') {
       element = <Login loginBtnHandle={() => this.loginHandler('isLoading')} />;
     } else if (this.state.status === 'isLoading') {
-      element = <Spinner size={'50px'} />;
+      element = <Spinner size={50} />;
       setTimeout(() => {
         this.loginHandler('isLogout');
       }, 2000);
