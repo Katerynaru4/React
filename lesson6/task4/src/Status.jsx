@@ -13,6 +13,7 @@ class Status extends Component {
     });
   };
 
+
   render() {
     return (
       <div className="status">
