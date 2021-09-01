@@ -15,9 +15,7 @@ class Auth extends Component {
   };
 
   render() {
-    let element = (
-      <Login changeStatusHandle={() => this.loginHandler('isLoading')} />
-    );
+    let element;
 
     if (this.state.status === 'isLogin') {
       element = <Login loginBtnHandle={() => this.loginHandler('isLoading')} />;
@@ -30,7 +28,7 @@ class Auth extends Component {
       element = <Logout logoutBtnHandle={() => this.loginHandler('isLogin')} />;
     }
 
-    return <>{element}</>;
+    return element
   }
 }
 
