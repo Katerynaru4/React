@@ -15,20 +15,15 @@ class Auth extends Component {
   };
 
   render() {
-    let element;
-
-    if (this.state.status === 'isLogin') {
-      element = <Login loginBtnHandle={() => this.loginHandler('isLoading')} />;
-    } else if (this.state.status === 'isLoading') {
-      element = <Spinner size={50} />;
-      setTimeout(() => {
-        this.loginHandler('isLogout');
-      }, 2000);
-    } else {
-      element = <Logout logoutBtnHandle={() => this.loginHandler('isLogin')} />;
+    switch (this.state.status) {
+      case 'isLogin':
+        return <Login onLogin={() => this.loginHandler('isLoading')} />;
+      case 'isLoading':
+        setTimeout(() => this.loginHandler('isLogout'), 2000);
+        return <Spinner size={50} />;
+      default:
+        return <Logout onLogout={() => this.loginHandler('isLogin')} />;
     }
-
-    return element
   }
 }
 
