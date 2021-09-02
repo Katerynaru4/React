@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Life from './Life.jsx';
+import Demo from './Demo.jsx';
 
-ReactDOM.render(
-  <Life number={4}/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Demo />, document.getElementById('root'));
