@@ -5,19 +5,37 @@ class ConnectionStatus extends Component {
     status: 'online',
   };
 
+  offlineListenerHandle = () => {
+    this.setState({
+      status: 'offline',
+    });
+  };
+  onlineListenerHandle = () => {
+    this.setState({
+      status: 'online',
+    });
+  };
   componentDidMount() {
-    window.addEventListener('offline', () => {
-      this.setState({
-        status: 'offline',
-      });
-    });
-    window.addEventListener('online', () => {
-      this.setState({
-        status: 'online',
-      });
-    });
+    this.offlineEventListener = window.addEventListener(
+      'offline',
+      this.offlineListenerHandle
+    );
+    this.onlineEventListener = window.addEventListener(
+      'online',
+      this.onlineListenerHandle
+    );
   }
 
+  componentWillUnmount() {
+    this.offlineEventListener.removeEventListener(
+      'offline',
+      offlineListenerHandle
+    );
+    this.onlineEventListener.removeEventListener(
+      'online',
+      onlineListenerHandle
+    );
+  }
   render() {
     return (
       <div
