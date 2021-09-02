@@ -25,7 +25,7 @@ class ConnectionStatus extends Component {
           this.state.status === 'offline' && 'status_offline'
         }`}
       >
-        Offline
+        {this.state.status}
       </div>
     );
   }
