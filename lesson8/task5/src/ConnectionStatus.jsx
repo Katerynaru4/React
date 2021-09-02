@@ -29,13 +29,14 @@ class ConnectionStatus extends Component {
   componentWillUnmount() {
     this.offlineEventListener.removeEventListener(
       'offline',
-      offlineListenerHandle
+      this.offlineListenerHandle
     );
     this.onlineEventListener.removeEventListener(
       'online',
-      onlineListenerHandle
+      this.onlineListenerHandle
     );
   }
+
   render() {
     return (
       <div
