@@ -19,9 +19,9 @@ class UserForm extends Component {
     return (
       <form
         className="login-form"
-        onSubmit={() => {
-          this.props.onSubmit(this.state);
+        onSubmit={(event) => {
           event.preventDefault();
+          this.props.onSubmit(this.state);
         }}
       >
         <h1 className="form-title">Profile</h1>
