@@ -20,12 +20,7 @@ class UserForm extends Component {
       <form
         className="login-form"
         onSubmit={() => {
-          this.props.onSubmit({
-            name: this.state.name,
-            student: this.state.student,
-            occupation: this.state.occupation,
-            about: this.state.about,
-          });
+          this.props.onSubmit(this.state);
           event.preventDefault();
         }}
       >
