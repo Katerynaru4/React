@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UsersList from './UsersList.jsx';
  
 const users = [
   {
-    name: 'user1',
+    name: '1user',
     age: 13,
     id: 'id_1',
   },
   {
-    name: 'user2',
+    name: '21user',
     age: 23,
     id: 'id_2',
   },
   
   {
-    name: 'user3',
+    name: '3user',
     age: 36,
     id: 'id_3',
   },
