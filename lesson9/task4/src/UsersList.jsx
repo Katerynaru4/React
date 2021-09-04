@@ -13,7 +13,7 @@ class UsersList extends Component {
   };
   render() {
     let filteredUsers = this.props.users.filter((user) =>
-      user.name.includes(this.state.searchValue)
+      user.name.toLowerCase().includes(this.state.searchValue.toLowerCase())
     );
     return (
       <div>
