@@ -1,24 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import fontawesome from '@fortawesome/fontawesome';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import {
+  fas,
   faChevronUp,
   faChevronDown,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-fontawesome.library.add(faChevronUp, faChevronDown);
+library.add(fas, faChevronUp);
+library.add(fas, faChevronDown);
+
+dom.watch();
 
 const Expand = ({ isOpen, onToggle, children, title }) => {
+
   return (
     <div className="expand border">
       <div className="expand__header">
         <span className="expand__title">{title}</span>
         <button className="expand__toggle-btn" onClick={onToggle}>
           {isOpen ? (
-            <FontAwesomeIcon icon="chevron-down" />
-          ) : (
             <FontAwesomeIcon icon="chevron-up" />
+          ) : (
+            <FontAwesomeIcon icon="chevron-down" />
           )}
         </button>
       </div>
@@ -27,7 +32,7 @@ const Expand = ({ isOpen, onToggle, children, title }) => {
   );
 };
 
-Expand.PropTypes = {
+Expand.propTypes = {
   isOpen: PropTypes.bool,
   onToggle: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
