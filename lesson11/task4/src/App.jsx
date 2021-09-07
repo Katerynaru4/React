@@ -1,31 +1,22 @@
-import React, { Component } from 'react';
-import Expand from './Expand.jsx';
+import React from 'react';
+import User from './User.jsx';
+import City from './City.jsx';
+import { withDataLoader } from './withDataLoader.jsx';
 
-class App extends Component {
-  state = {
-    isOpen: false,
-  };
-  toggleBtnHandle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  };
-  render() {
-    return (
-      <div className="app">
-        <Expand
-          isOpen={this.state.isOpen}
-          onToggle={this.toggleBtnHandle}
-          title="Some title"
-        >
-          <p>
-            Hooks are a new addition in React 16.8. They let you use state and
-            other React features without writing a class.
-          </p>
-        </Expand>
-      </div>
-    );
-  }
-}
+const MyCity = withDataLoader(
+  'https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/cities/1',
+  City
+);
+
+const SuperUser = withDataLoader('https://api.github.com/users/octocat', User);
+
+const App = () => {
+  return (
+    <div className="page">
+      <MyCity />
+      <SuperUser />
+    </div>
+  );
+};
 
 export default App;
