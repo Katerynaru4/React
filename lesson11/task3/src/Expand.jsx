@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Expand = ({ isOpen, onToggle, children, title }) => {
+const Expand = ({ title, children, isOpen, onToggle }) => {
   return (
     <div className="expand border">
       <div className="expand__header">
@@ -14,7 +14,7 @@ const Expand = ({ isOpen, onToggle, children, title }) => {
           )}
         </button>
       </div>
-      <div className="expand__content">{isOpen ? children : null}</div>
+      {isOpen ? <div className="expand__content">{children}</div> : null}
     </div>
   );
 };
