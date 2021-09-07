@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Expand = ({ isOpen, onToggle, children, title }) => {
-
   return (
     <div className="expand border">
       <div className="expand__header">
         <span className="expand__title">{title}</span>
         <button className="expand__toggle-btn" onClick={onToggle}>
           {isOpen ? (
-            <i className="fas fa-chevron-up"></i>
+            <i className="material-icons">arrow_drop_up</i>
           ) : (
-            <i className="fas fa-chevron-down"></i>
+            <i className="material-icons">arrow_drop_down</i>
           )}
         </button>
       </div>
