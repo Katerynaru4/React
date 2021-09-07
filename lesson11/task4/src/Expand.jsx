@@ -1,5 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import {
+  fas,
+  faChevronUp,
+  faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(fas, faChevronUp);
+library.add(fas, faChevronDown);
+
+dom.watch();
 
 const Expand = ({ isOpen, onToggle, children, title }) => {
 
@@ -9,9 +21,9 @@ const Expand = ({ isOpen, onToggle, children, title }) => {
         <span className="expand__title">{title}</span>
         <button className="expand__toggle-btn" onClick={onToggle}>
           {isOpen ? (
-            <i className="fas fa-chevron-up"></i>
+            <FontAwesomeIcon icon="chevron-up" />
           ) : (
-            <i className="fas fa-chevron-down"></i>
+            <FontAwesomeIcon icon="chevron-down" />
           )}
         </button>
       </div>
