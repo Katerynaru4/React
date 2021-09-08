@@ -1,43 +1,53 @@
 import React, { Component } from 'react';
 import Task from './Task.jsx';
 import CreateTaskInput from './CreateTaskInput.jsx';
+import {
+  createTask,
+  fetchTasksList,
+  UpdateTask,
+  deleteTask,
+} from './tasksGateway.jsx';
 
 class TasksList extends Component {
   state = {
-    tasks: [
-      { text: 'Buy butter', done: true, id: 1 },
-      { text: 'Buy milk', done: false, id: 2 },
-      { text: 'Buy bread', done: false, id: 3 },
-    ],
+    tasks: [],
   };
-  onCreate = (text) => {
-    const { tasks } = this.state;
-    const newTask = {
-      id: Math.random(),
-      text,
+  fetchTasks = () => {
+    fetchTasksList().then((tasksList) => {
+      this.setState({
+        tasks: tasksList,
+      });
+    });
+  };
+  componentDidMount() {
+    this.fetchTasks();
+  }
+
+  onCreate = (value) => {
+    const taskData = {
+      text: value,
       done: false,
     };
-    const updatesTasks = tasks.concat(newTask);
-    this.setState({
-      tasks: updatesTasks,
-    });
+    createTask(taskData).then(() => this.fetchTasks());
   };
+
   handleTaskStatusChange = (id) => {
-    const updatedTasks = this.state.tasks.map((task) => {
-      if (task.id === id) {
-        return {
-          ...task,
-          done: !task.done,
-        };
-      }
-      return task;
+    const { done, text } = this.state.tasks.find((task) => task.id === id);
+    const taskData = {
+      text,
+      done: !done,
+    };
+    UpdateTask(id, taskData).then(() => {
+      this.fetchTasks();
     });
-    this.setState({ tasks: updatedTasks });
   };
+
   handleTaskDelete = (id) => {
-    const updatedTasks = this.state.tasks.filter((task) => task.id !== id);
-    this.setState({ tasks: updatedTasks });
+    deleteTask(id).then(() => {
+      this.fetchTasks();
+    });
   };
+
   render() {
     const sortedList = this.state.tasks.slice().sort((a, b) => a.done - b.done);
     return (
