@@ -14,7 +14,6 @@ class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: props.location,
       time: moment(getTimeWithOffset(this.props.offset)).format('LTS'),
     };
   }
@@ -31,7 +30,7 @@ class Clock extends Component {
   render() {
     return (
       <div className="clock">
-        <div className="clock__location">{this.state.location}</div>
+        <div className="clock__location">{this.props.location}</div>
         <div className="clock__time">{this.state.time}</div>
       </div>
     );
